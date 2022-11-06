@@ -1,0 +1,12 @@
+.content__container {
+  display: grid;
+  grid-template-columns: 50% 45%;
+  gap: 5%;
+}
+
+.image {
+  border-radius: 16px;
+  object-fit: cover;
+  height: 70vh;
+  width: 25vw;
+}

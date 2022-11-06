@@ -1,0 +1,22 @@
+.nav {
+  height: 4rem;
+  background: var(--color-pink);
+  padding: .5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.nav__component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.elements {
+  display: flex;
+  gap: .5rem;
+}
+
+.logo {
+  height: 2.5rem;
+}

@@ -1,0 +1,13 @@
+<mat-toolbar class="nav">
+  <mat-toolbar-row class="nav__component">
+    <a mat-button (click)="select('')">
+      <img class="logo" src="../../assets/images/telekom_logo_white.png" alt="logo"/>
+    </a>
+    <div class="elements">
+      <button mat-button *ngFor="let item of nav_elements" class="btn btn-primary"
+      (click)="select(item.value)">
+       {{item.title}}&nbsp;
+     </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

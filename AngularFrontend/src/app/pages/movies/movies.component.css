@@ -1,0 +1,36 @@
+.movies__container {
+  padding: 1rem;
+}
+
+.card__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  max-width: 100%;
+  text-align: center;
+}
+
+.movie__card {
+  border: 1px solid var(--color-pink);
+  background: var(--color-pink);
+  border-radius: 16px;
+}
+
+.movieList__image {
+  width: 300px;
+  height: 400px;
+  scale: 1/1;
+}
+
+.description__content {
+  height: 200px;
+  overflow: hidden;
+}
+
+.movie__desc {
+  font-size: 18px;
+}
+
+.move__date {
+  font-size: 16px;
+}

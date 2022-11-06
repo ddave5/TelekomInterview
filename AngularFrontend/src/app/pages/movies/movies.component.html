@@ -1,0 +1,40 @@
+<div class="movies__container">
+
+  <div *ngIf="isLoading" class="full-height vertical-align-center flex-column">
+    <div class="spinner-border" style="width: 4rem; height: 4rem" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+
+  <div *ngIf="movies.length === 0 && !isLoading; else showList">
+    <p>Sajnos nincs jelenleg film az adatbázisban.:(</p>
+   </div>
+   
+   <ng-template #showList>
+    <div class="card__container">
+     <div *ngFor="let movie of movies">
+       <mat-card class="movie__card">
+         <mat-card-header>
+           <mat-card-title>{{movie.title}}</mat-card-title>
+         </mat-card-header>
+         <img src={{movie.url}} alt="movie_image" class="movieList__image mb-3">
+         <mat-card-content >
+          <div class="description__content mb-3">
+            <p class="movie__desc">
+              {{movie.description}}
+            </p>
+          </div>
+          <p class="movie__date">
+            {{movie.date}}
+          </p>
+         </mat-card-content>
+         <mat-card-actions class="d-flex justify-content-around">
+           <button mat-button (click)="onEdit(movie)" class="btn btn-primary">Szerkesztés</button>
+           <button mat-button (click)="onDelete(movie)" class="btn btn-primary">Törlés</button>
+         </mat-card-actions>
+       </mat-card>
+     </div>
+    </div>
+   </ng-template>
+</div>
+
