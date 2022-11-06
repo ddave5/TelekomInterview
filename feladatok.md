@@ -1,18 +1,18 @@
-#### Milyen életciklus kampókat (lifecycle hook) ismer? Magyarázza el a használatukat!  
-0. constructor: Igazából ez nem Angular, hanem a JavaScript feature. Minden class létrejöttekor ez a függvény fut le elsõnek, viszont nem lehet sem az input dekorációval ellátott változókat, sem bármely gyerek komponens nincs még létrehozva, így leginkább itt service vagy router inicializáláshoz szokták használni.  
-1. ngOnChanges: Ez a hook fut le elsõnek a komponens létrejöttekor, illetve lefut minden olyan @Input() dekorációval történt változó változása esetén, amely a komponensben történik. Mivel a komponens létrejöttekor értéket ad ezen változóknak, emiatt fut le az ngOnChanges hamarabb, mint az ngOnInit.  
-2. ngOnInit: Ez a hook akkor fut le, miután létre lett hozva a komponens és inicializálva vannak az input property-k. Ez a függvény csak egyszer fut le, a komponens létrejöttekor és ha valamilyen logikát szeretnénk a komponenshez illeszteni, akkor gyakran itt valósítjuk meg (pl.: adatok hívása back-end felõl). Viszont itt még olyan változókat, melyek a @ViewChild, @ViewChildren, @ContentChild és @ContentChildren dekorációval vannak ellátva nem érhetõek el.  
-3. ngDoCheck: Ez a hook akkor fut le, ha valamilyen event történt a komponens során (pl egy gombnyomás történt). Ez nem jelenti azt, hogy tényleges változás történne a komponensben.  
-4. ngAfterContentInit: Ez a hook akkor fut le, mikor a komponens contentje teljesen betöltõdött. Mielõtt a hook lefut, elõtte a @ContentChild és a @ContentChildren dekorációval ellátott változók inicializálása megtörténik.  
-5. ngAfterContentChecked: Ez a hook akkor fut le, mikor olyan változóval történik változás, melyek @ContentChild vagy @ContentChildren dekorációval ellátott változókkal történnek. A különbség ngAfterContentChecked és ngAfterContentInit közt az, hogy az ngAfterContentInit csak egyszer fut le, míg a ngAfterContentChecked minden változás esetén.  
-6. ngAfterViewInit: Ez a hook akkor fut le, mikor a komponens view része teljesen betöltõdött. Mielõtt a hook lefut, elõtte a @ViewChild és a @ViewChildren dekorációval ellátott változók inicializálása megtörténik.  
-7. ngAfterViewChecked: Ez a hook akkor fut le, mikor olyan változóval történik változás, melyek @ViewChild vagy @ViewChildren dekorációval ellátott változókkal történnek. A különbség ngAfterViewCheckedés ngAfterViewInit közt az, hogy az ngAfterViewInit csak egyszer fut le, míg a ngAfterViewCheckedminden változás esetén.  
-8. ngOnDelete: Ez a hook azelõtt fut le, mielõtt a component a DOM-ból törlõdne. Ennek segítségével tudunk egyes cleanup-okat végrehajtani illetve leiratkozni Observable-rõl, hogy ne történjen memory leak.  
+#### Milyen Ã©letciklus kampÃ³kat (lifecycle hook) ismer? MagyarÃ¡zza el a hasznÃ¡latukat!  
+0. constructor: IgazÃ¡bÃ³l ez nem Angular, hanem a JavaScript feature. Minden class lÃ©trejÃ¶ttekor ez a fÃ¼ggvÃ©ny fut le elsÅ‘nek, viszont nem lehet sem az input dekorÃ¡ciÃ³val ellÃ¡tott vÃ¡ltozÃ³kat, sem bÃ¡rmely gyerek komponens nincs mÃ©g lÃ©trehozva, Ã­gy leginkÃ¡bb itt service vagy router inicializÃ¡lÃ¡shoz szoktÃ¡k hasznÃ¡lni.  
+1. ngOnChanges: Ez a hook fut le elsÅ‘nek a komponens lÃ©trejÃ¶ttekor, illetve lefut minden olyan @Input() dekorÃ¡ciÃ³val tÃ¶rtÃ©nt vÃ¡ltozÃ³ vÃ¡ltozÃ¡sa esetÃ©n, amely a komponensben tÃ¶rtÃ©nik. Mivel a komponens lÃ©trejÃ¶ttekor Ã©rtÃ©ket ad ezen vÃ¡ltozÃ³knak, emiatt fut le az ngOnChanges hamarabb, mint az ngOnInit.  
+2. ngOnInit: Ez a hook akkor fut le, miutÃ¡n lÃ©tre lett hozva a komponens Ã©s inicializÃ¡lva vannak az input property-k. Ez a fÃ¼ggvÃ©ny csak egyszer fut le, a komponens lÃ©trejÃ¶ttekor Ã©s ha valamilyen logikÃ¡t szeretnÃ©nk a komponenshez illeszteni, akkor gyakran itt valÃ³sÃ­tjuk meg (pl.: adatok hÃ­vÃ¡sa back-end felÅ‘l). Viszont itt mÃ©g olyan vÃ¡ltozÃ³kat, melyek a @ViewChild, @ViewChildren, @ContentChild Ã©s @ContentChildren dekorÃ¡ciÃ³val vannak ellÃ¡tva nem Ã©rhetÅ‘ek el.  
+3. ngDoCheck: Ez a hook akkor fut le, ha valamilyen event tÃ¶rtÃ©nt a komponens sorÃ¡n (pl egy gombnyomÃ¡s tÃ¶rtÃ©nt). Ez nem jelenti azt, hogy tÃ©nyleges vÃ¡ltozÃ¡s tÃ¶rtÃ©nne a komponensben.  
+4. ngAfterContentInit: Ez a hook akkor fut le, mikor a komponens contentje teljesen betÃ¶ltÅ‘dÃ¶tt. MielÅ‘tt a hook lefut, elÅ‘tte a @ContentChild Ã©s a @ContentChildren dekorÃ¡ciÃ³val ellÃ¡tott vÃ¡ltozÃ³k inicializÃ¡lÃ¡sa megtÃ¶rtÃ©nik.  
+5. ngAfterContentChecked: Ez a hook akkor fut le, mikor olyan vÃ¡ltozÃ³val tÃ¶rtÃ©nik vÃ¡ltozÃ¡s, melyek @ContentChild vagy @ContentChildren dekorÃ¡ciÃ³val ellÃ¡tott vÃ¡ltozÃ³kkal tÃ¶rtÃ©nnek. A kÃ¼lÃ¶nbsÃ©g ngAfterContentChecked Ã©s ngAfterContentInit kÃ¶zt az, hogy az ngAfterContentInit csak egyszer fut le, mÃ­g a ngAfterContentChecked minden vÃ¡ltozÃ¡s esetÃ©n.  
+6. ngAfterViewInit: Ez a hook akkor fut le, mikor a komponens view rÃ©sze teljesen betÃ¶ltÅ‘dÃ¶tt. MielÅ‘tt a hook lefut, elÅ‘tte a @ViewChild Ã©s a @ViewChildren dekorÃ¡ciÃ³val ellÃ¡tott vÃ¡ltozÃ³k inicializÃ¡lÃ¡sa megtÃ¶rtÃ©nik.  
+7. ngAfterViewChecked: Ez a hook akkor fut le, mikor olyan vÃ¡ltozÃ³val tÃ¶rtÃ©nik vÃ¡ltozÃ¡s, melyek @ViewChild vagy @ViewChildren dekorÃ¡ciÃ³val ellÃ¡tott vÃ¡ltozÃ³kkal tÃ¶rtÃ©nnek. A kÃ¼lÃ¶nbsÃ©g ngAfterViewCheckedÃ©s ngAfterViewInit kÃ¶zt az, hogy az ngAfterViewInit csak egyszer fut le, mÃ­g a ngAfterViewCheckedminden vÃ¡ltozÃ¡s esetÃ©n.  
+8. ngOnDelete: Ez a hook azelÅ‘tt fut le, mielÅ‘tt a component a DOM-bÃ³l tÃ¶rlÅ‘dne. Ennek segÃ­tsÃ©gÃ©vel tudunk egyes cleanup-okat vÃ©grehajtani illetve leiratkozni Observable-rÅ‘l, hogy ne tÃ¶rtÃ©njen memory leak.  
   
-#### Mi az az adatkötés? Milyen típusaik vannak? Adjon példát a használatukra!  
-Az adatkötés egy kapcsolat, mely a View réteg és a mögötte található alkalmazást (mi esetünkben TypeScript) között található. Irányuk szerint két fajta adatkötést különböztetünk meg: egyirányú adatkötést, mikor az adat vagy az alkalmazásból megy a DOM-ba vagy fordítva, illetve a kétirányút, mikor mindkét irányba történik az adatok áramoltatása. Ezenkívül fajtáját tekintve 4 különbözõ adatkötésrõl beszélhetünk:  
+#### Mi az az adatkÃ¶tÃ©s? Milyen tÃ­pusaik vannak? Adjon pÃ©ldÃ¡t a hasznÃ¡latukra!  
+Az adatkÃ¶tÃ©s egy kapcsolat, mely a View rÃ©teg Ã©s a mÃ¶gÃ¶tte talÃ¡lhatÃ³ alkalmazÃ¡st (mi esetÃ¼nkben TypeScript) kÃ¶zÃ¶tt talÃ¡lhatÃ³. IrÃ¡nyuk szerint kÃ©t fajta adatkÃ¶tÃ©st kÃ¼lÃ¶nbÃ¶ztetÃ¼nk meg: egyirÃ¡nyÃº adatkÃ¶tÃ©st, mikor az adat vagy az alkalmazÃ¡sbÃ³l megy a DOM-ba vagy fordÃ­tva, illetve a kÃ©tirÃ¡nyÃºt, mikor mindkÃ©t irÃ¡nyba tÃ¶rtÃ©nik az adatok Ã¡ramoltatÃ¡sa. EzenkÃ­vÃ¼l fajtÃ¡jÃ¡t tekintve 4 kÃ¼lÃ¶nbÃ¶zÅ‘ adatkÃ¶tÃ©srÅ‘l beszÃ©lhetÃ¼nk:  
   
-1. Beszúrás (Interpolation): Ebben az esetben az adatok az Alkalmazásból mennek a View irányába. Beszúrás esetén a HTML file-ba {{ ... }} -közötti változó értékei lesznek beszúrva. Példa:  
+1. BeszÃºrÃ¡s (Interpolation): Ebben az esetben az adatok az AlkalmazÃ¡sbÃ³l mennek a View irÃ¡nyÃ¡ba. BeszÃºrÃ¡s esetÃ©n a HTML file-ba {{ ... }} -kÃ¶zÃ¶tti vÃ¡ltozÃ³ Ã©rtÃ©kei lesznek beszÃºrva. PÃ©lda:  
 **Book.html**  
 ```  
 <p> {{ title }} </p>.  
@@ -20,10 +20,10 @@ Az adatkötés egy kapcsolat, mely a View réteg és a mögötte található alkalmazást
 **book.component.ts**  
 ```  
 export class BookComponent {  
-title = 'Cím';  
+	title = 'CÃ­m';  
 }  
 ```  
-2. Változó alapú kötés (Property binding): Ebben az esetben is az Alkalmazásból mennek a View irányába. Változó alapú kötés esetén a HTML egy tagjének a viselkedését, attribútumának értékét lehet módosítani az Alkalmazásban található változó értékének beállításával. Azokat az attribútumokat, melyeknek az értéke változó alapú kötésben van, [] közé kell tenni. Példa:  
+2. VÃ¡ltozÃ³ alapÃº kÃ¶tÃ©s (Property binding): Ebben az esetben is az AlkalmazÃ¡sbÃ³l mennek a View irÃ¡nyÃ¡ba. VÃ¡ltozÃ³ alapÃº kÃ¶tÃ©s esetÃ©n a HTML egy tagjÃ©nek a viselkedÃ©sÃ©t, attribÃºtumÃ¡nak Ã©rtÃ©kÃ©t lehet mÃ³dosÃ­tani az AlkalmazÃ¡sban talÃ¡lhatÃ³ vÃ¡ltozÃ³ Ã©rtÃ©kÃ©nek beÃ¡llÃ­tÃ¡sÃ¡val. Azokat az attribÃºtumokat, melyeknek az Ã©rtÃ©ke vÃ¡ltozÃ³ alapÃº kÃ¶tÃ©sben van, [] kÃ¶zÃ© kell tenni. PÃ©lda:  
 **Book.html**  
 ```  
 <input [disabled] = "isCreate" ... >  
@@ -32,11 +32,11 @@ title = 'Cím';
 **book.component.ts**  
 ```  
 export class BookComponent {  
-isCreate = false;  
-book!: Book;  
+	isCreate = false;  
+	book!: Book;  
 }  
 ```  
-3. Esemény alapú kötés (Event binding): Ebben az esetben a View réteg irányából érkezik az adat az Alkalmazás felé. Amikor a view rétegben egy esemény megtörténik (például kattintanak egy gombra), akkor a view elküldi az adatokat az alkalmazás felé és ott történik meg a folyamat végrehajtása. Ezen eseményeket () közé tesszük. Példa:  
+3. EsemÃ©ny alapÃº kÃ¶tÃ©s (Event binding): Ebben az esetben a View rÃ©teg irÃ¡nyÃ¡bÃ³l Ã©rkezik az adat az AlkalmazÃ¡s felÃ©. Amikor a view rÃ©tegben egy esemÃ©ny megtÃ¶rtÃ©nik (pÃ©ldÃ¡ul kattintanak egy gombra), akkor a view elkÃ¼ldi az adatokat az alkalmazÃ¡s felÃ© Ã©s ott tÃ¶rtÃ©nik meg a folyamat vÃ©grehajtÃ¡sa. Ezen esemÃ©nyeket () kÃ¶zÃ© tesszÃ¼k. PÃ©lda:  
 **Book.html**  
 ```  
 <button (click) = "create()" ... >  
@@ -44,12 +44,12 @@ book!: Book;
 **book.component.ts**  
 ```  
 export class BookComponent {  
-create(): void {  
-console.log('létrehozva');  
-}  
+	create(): void {  
+		console.log('lÃ©trehozva');  
+	}  
 }  
 ```  
-4. Két irányú adatkötés (Two-way data binding): Ebben az esetben az adat mind a View irányából és irányába, mind az alkalmazás irányából és irányába is átadódik. A View és az alkalmazás közt ilyenkor egy folyamatos kapcsolat van és adatváltozás esetén mindkét helyen megtörténik a módosulás. Leginkább formok esetében szokás használni. Ezen eseményeket [()] közé tesszük. Példa:  
+4. KÃ©t irÃ¡nyÃº adatkÃ¶tÃ©s (Two-way data binding): Ebben az esetben az adat mind a View irÃ¡nyÃ¡bÃ³l Ã©s irÃ¡nyÃ¡ba, mind az alkalmazÃ¡s irÃ¡nyÃ¡bÃ³l Ã©s irÃ¡nyÃ¡ba is Ã¡tadÃ³dik. A View Ã©s az alkalmazÃ¡s kÃ¶zt ilyenkor egy folyamatos kapcsolat van Ã©s adatvÃ¡ltozÃ¡s esetÃ©n mindkÃ©t helyen megtÃ¶rtÃ©nik a mÃ³dosulÃ¡s. LeginkÃ¡bb formok esetÃ©ben szokÃ¡s hasznÃ¡lni. Ezen esemÃ©nyeket [()] kÃ¶zÃ© tesszÃ¼k. PÃ©lda:  
 **Book.html**  
 ```  
 <input type="text [(ngModel)] ="title" ... >  
@@ -57,49 +57,49 @@ console.log('létrehozva');
 **book.component.ts**  
 ```  
 export class BookComponent {  
-title: string = "Throne of Glass";  
+	title: string = "Throne of Glass";  
 }  
 ```  
   
-#### Mi a különbség egy konstruktor és a ngOnInit metódus között?  
-A konstruktor egy Javascript feature, az ngOnInit pedig Angular feature. A component osztály létrejöttekor elsõnek a konstruktor fut le, ennek a törzsében található kód fut le, viszont az osztályon belül @Input(), @Output(), stb. dekorációkkal ellátott változók értékeit nem tudja elérni, míg ngOnInit esetében a @Input(), @Output() értékei már elérhetõek. Általánosságban konstruktorban érdemes service, router, stb osztályokat deklarálni, míg a tényleges kezdeti állapot elérését segítõ függvényeket (például adatok lekérdezése backendrõl vagy adat feldolgozása, mely más komponenstõl érkezett), az ngOnInit függvényben érdemes kezelni.
+#### Mi a kÃ¼lÃ¶nbsÃ©g egy konstruktor Ã©s a ngOnInit metÃ³dus kÃ¶zÃ¶tt?  
+A konstruktor egy Javascript feature, az ngOnInit pedig Angular feature. A component osztÃ¡ly lÃ©trejÃ¶ttekor elsÅ‘nek a konstruktor fut le, ennek a tÃ¶rzsÃ©ben talÃ¡lhatÃ³ kÃ³d fut le, viszont az osztÃ¡lyon belÃ¼l @Input(), @Output(), stb. dekorÃ¡ciÃ³kkal ellÃ¡tott vÃ¡ltozÃ³k Ã©rtÃ©keit nem tudja elÃ©rni, mÃ­g ngOnInit esetÃ©ben a @Input(), @Output() Ã©rtÃ©kei mÃ¡r elÃ©rhetÅ‘ek. ÃltalÃ¡nossÃ¡gban konstruktorban Ã©rdemes service, router, stb osztÃ¡lyokat deklarÃ¡lni, mÃ­g a tÃ©nyleges kezdeti Ã¡llapot elÃ©rÃ©sÃ©t segÃ­tÅ‘ fÃ¼ggvÃ©nyeket (pÃ©ldÃ¡ul adatok lekÃ©rdezÃ©se backendrÅ‘l vagy adat feldolgozÃ¡sa, mely mÃ¡s komponenstÅ‘l Ã©rkezett), az ngOnInit fÃ¼ggvÃ©nyben Ã©rdemes kezelni.
   
 #### Mi az RxJs?  
-RxJs egy javascript library, melynek segítségével tudjuk tudunk aszinkron adathívásokat kezelni. Az adatok egy folyamban érkeznek, ezekre fel- és leiratkozhatunk innen ki tudjuk nyerni a számunkra megfelelõ adatokat.
+RxJs egy javascript library, melynek segÃ­tsÃ©gÃ©vel tudjuk tudunk aszinkron adathÃ­vÃ¡sokat kezelni. Az adatok egy folyamban Ã©rkeznek, ezekre fel- Ã©s leiratkozhatunk innen ki tudjuk nyerni a szÃ¡munkra megfelelÅ‘ adatokat.
   
-#### Mi a különbség egy observable és egy promise között? Adjon példát a használatukra!  
-Mindkettõ aszinkronikus módon mûködik, a különbség köztük az események láncolata között van. Promise esetében aszinkron módon történik a függvények meghívása, viszont minden függvény csak akkor hívódik meg, miután a másik befejezte a folyamatát, így egy láncot képezve. Az observable esetében viszont egy folyamra iratkozunk fel, ahonnan kérjük le az adatokat és egyes folyamatok közt nincs egy várakoztatás. Például, szeretnénk egy felhasználónak a github repositorait látni, akkor elõbb meg kell szerezni a felhasználónevét (mondjuk adatbázisból), utána kell egy hívást csinálni arra a felhasználónak a github repository-jára és utána tudjuk megszerezni az adott felhasználó publikus repositorait, így ebben az esetben Promise-ra lesz szükség. Viszont ha például egy rest api-n keresztül szeretnénk megszerezni egy felhasználókat tartalmazó listát, akkor egy get kérést kell indítani a megfelelõ url-re és fel kell iratkozni arra a csatornára, amely ezt a kérést indította és így tudjuk kinyerni az adatokat, azaz Observable-nak kell lennie.
-Példa **Promise**-ra:
+#### Mi a kÃ¼lÃ¶nbsÃ©g egy observable Ã©s egy promise kÃ¶zÃ¶tt? Adjon pÃ©ldÃ¡t a hasznÃ¡latukra!  
+MindkettÅ‘ aszinkronikus mÃ³don mÅ±kÃ¶dik, a kÃ¼lÃ¶nbsÃ©g kÃ¶ztÃ¼k az esemÃ©nyek lÃ¡ncolata kÃ¶zÃ¶tt van. Promise esetÃ©ben aszinkron mÃ³don tÃ¶rtÃ©nik a fÃ¼ggvÃ©nyek meghÃ­vÃ¡sa, viszont minden fÃ¼ggvÃ©ny csak akkor hÃ­vÃ³dik meg, miutÃ¡n a mÃ¡sik befejezte a folyamatÃ¡t, Ã­gy egy lÃ¡ncot kÃ©pezve. Az observable esetÃ©ben viszont egy folyamra iratkozunk fel, ahonnan kÃ©rjÃ¼k le az adatokat Ã©s egyes folyamatok kÃ¶zt nincs egy vÃ¡rakoztatÃ¡s. PÃ©ldÃ¡ul, szeretnÃ©nk egy felhasznÃ¡lÃ³nak a github repositorait lÃ¡tni, akkor elÅ‘bb meg kell szerezni a felhasznÃ¡lÃ³nevÃ©t (mondjuk adatbÃ¡zisbÃ³l), utÃ¡na kell egy hÃ­vÃ¡st csinÃ¡lni arra a felhasznÃ¡lÃ³nak a github repository-jÃ¡ra Ã©s utÃ¡na tudjuk megszerezni az adott felhasznÃ¡lÃ³ publikus repositorait, Ã­gy ebben az esetben Promise-ra lesz szÃ¼ksÃ©g. Viszont ha pÃ©ldÃ¡ul egy rest api-n keresztÃ¼l szeretnÃ©nk megszerezni egy felhasznÃ¡lÃ³kat tartalmazÃ³ listÃ¡t, akkor egy get kÃ©rÃ©st kell indÃ­tani a megfelelÅ‘ url-re Ã©s fel kell iratkozni arra a csatornÃ¡ra, amely ezt a kÃ©rÃ©st indÃ­totta Ã©s Ã­gy tudjuk kinyerni az adatokat, azaz Observable-nak kell lennie.
+PÃ©lda **Promise**-ra:
 ```
-	function loadGithubUser(name: string): Promise<any> {
-		return this.httpClient.get(`https://api.github.com/users/${name}`)
-		.toPromise()
-		.then(response => response.json());
-	}
-	function loadAvatar(githubUser): Promise<any> {
-		return new Promise ( function( resolve, reject) {
-			console.log(githubUser.avatar_url);
-		});
-	}
-	loadGithubUser('ddave5').then(loadAvatar);
+function loadGithubUser(name: string): Promise<any> {
+	return this.httpClient.get(`https://api.github.com/users/${name}`)
+	.toPromise()
+	.then(response => response.json());
+}
+function loadAvatar(githubUser): Promise<any> {
+	return new Promise ( function( resolve, reject) {
+		console.log(githubUser.avatar_url);
+	});
+}
+loadGithubUser('ddave5').then(loadAvatar);
 ```
-Példa **Observable**-re:
+PÃ©lda **Observable**-re:
 ```
-	getAllMovies() : Observable<Movie[]>{
-		return  this.http.get<Movie[]>(this.apiUrl + 'movies')
-	}
+getAllMovies() : Observable<Movie[]>{
+	return  this.http.get<Movie[]>(this.apiUrl + 'movies')
+}
 	
-	const movies!: Movie;
-	fetchData() : void {
-		this.movieService.getAllMovies().subscribe( (data) => 
-			this.movies = data;
-		});
-	}
+const movies!: Movie;
+fetchData() : void {
+	this.movieService.getAllMovies().subscribe( (data) => 
+		this.movies = data;
+	});
+}
 ```
   
-#### Mik az observable létrehozó függvények? Adjon példát a használatukra!  
+#### Mik az observable lÃ©trehozÃ³ fÃ¼ggvÃ©nyek? Adjon pÃ©ldÃ¡t a hasznÃ¡latukra!  
   
-#### Vegyük az alábbi kódrészleteket. Hogyan kell módosítani, hogy reactive form-ot használjon? 
+#### VegyÃ¼k az alÃ¡bbi kÃ³drÃ©szleteket. Hogyan kell mÃ³dosÃ­tani, hogy reactive form-ot hasznÃ¡ljon? 
 **app.module.ts**
 ```
 import { NgModule } from '@angular/core'; 
@@ -187,41 +187,41 @@ export class UserregistrationComponent implements OnInit {
 	} 
 }
 ```
-## Java kérdések  
+## Java kÃ©rdÃ©sek  
   
-#### Mit ír ki az alábbi program és miért?  
+#### Mit Ã­r ki az alÃ¡bbi program Ã©s miÃ©rt?  
 ```  
 int x = 3;  
 int result = x+++x+++x;  
 System.out.println( result );  
 ```  
-A kiértékelés zárójelekkel ha ellátjuk, akkor lehet látni a leginkább a megoldást: ((x++)+(x++))+x.  
-1. balról elsõ x++: kiértékeli 3-ra az x-et és növeli az értékét 1-gyel (azaz ezután az x értéke 4 lesz). Legyen a kiértékelt változó y, aminek az értéke így 3.  
-2. balról második x++: kiértékeli 4-re az x-et és növeli az értékét 1-gyel (azaz ezután az x értéke 5 lesz). Legyen a kiértékelt változó z, aminek az értéke így 4.  
-3. ((x++)+(x++)): aminek akkor az átírása: y + z = 3 + 4 = 7.  
-4. ((x++)+(x++))+x: aminek akkor az átírása y + z + x = 3 + 4 + 5 = 12.  
-5. Így összegezve x+++x+++x = 12.  
+A kiÃ©rtÃ©kelÃ©s zÃ¡rÃ³jelekkel ha ellÃ¡tjuk, akkor lehet lÃ¡tni a leginkÃ¡bb a megoldÃ¡st: ((x++)+(x++))+x.  
+1. balrÃ³l elsÅ‘ x++: kiÃ©rtÃ©keli 3-ra az x-et Ã©s nÃ¶veli az Ã©rtÃ©kÃ©t 1-gyel (azaz ezutÃ¡n az x Ã©rtÃ©ke 4 lesz). Legyen a kiÃ©rtÃ©kelt vÃ¡ltozÃ³ y, aminek az Ã©rtÃ©ke Ã­gy 3.  
+2. balrÃ³l mÃ¡sodik x++: kiÃ©rtÃ©keli 4-re az x-et Ã©s nÃ¶veli az Ã©rtÃ©kÃ©t 1-gyel (azaz ezutÃ¡n az x Ã©rtÃ©ke 5 lesz). Legyen a kiÃ©rtÃ©kelt vÃ¡ltozÃ³ z, aminek az Ã©rtÃ©ke Ã­gy 4.  
+3. ((x++)+(x++)): aminek akkor az Ã¡tÃ­rÃ¡sa: y + z = 3 + 4 = 7.  
+4. ((x++)+(x++))+x: aminek akkor az Ã¡tÃ­rÃ¡sa y + z + x = 3 + 4 + 5 = 12.  
+5. Ãgy Ã¶sszegezve x+++x+++x = 12.  
   
-#### Mi a szerializáció Java-ban?  
-A szerializáció lényege, hogy az osztályokat, a benne található adattal együtt egy byte kóddá lehet alakítani, ezáltal lehetõvé téve, hogy az osztályt a tartalmával együtt könnyebben lehessen küldeni a hálózaton keresztül vagy egy osztály tartalmát könnyebben lehessen kiírni fájlba. Megvalósítási módja, hogy az osztályon implementáljuk a Serializable interface-t. Ha egy szerializált osztálynak valamelyik adattagja egy nem primitív adattag, akkor annak az osztálynak is szerializálva kell lennie.
+#### Mi a szerializÃ¡ciÃ³ Java-ban?  
+A szerializÃ¡ciÃ³ lÃ©nyege, hogy az osztÃ¡lyokat, a benne talÃ¡lhatÃ³ adattal egyÃ¼tt egy byte kÃ³ddÃ¡ lehet alakÃ­tani, ezÃ¡ltal lehetÅ‘vÃ© tÃ©ve, hogy az osztÃ¡lyt a tartalmÃ¡val egyÃ¼tt kÃ¶nnyebben lehessen kÃ¼ldeni a hÃ¡lÃ³zaton keresztÃ¼l vagy egy osztÃ¡ly tartalmÃ¡t kÃ¶nnyebben lehessen kiÃ­rni fÃ¡jlba. MegvalÃ³sÃ­tÃ¡si mÃ³dja, hogy az osztÃ¡lyon implementÃ¡ljuk a Serializable interface-t. Ha egy szerializÃ¡lt osztÃ¡lynak valamelyik adattagja egy nem primitÃ­v adattag, akkor annak az osztÃ¡lynak is szerializÃ¡lva kell lennie.
   
-#### Mi a különbség az interface és abstract osztály között?  
-Az absztrakt osztály olyan osztály, melynek van olyan függvénye, melynek van olyan függvénye, melynek nincs törzse, mivel azt majd az osztályból származó osztályok fogják megvalósítani. Míg az interface egy teljesen absztract osztály. Benne minden függvénynek csak fejléce van és minden változó benne public, static és final. Mivel Java-ban nincs többszörös öröklõdés, emiatt mindig csak egy õsosztálya lehet, viszont implementálhat több interface-t is. Például egy abstrakt osztály legyen az Animal osztály. Minden állatnak van szeme, feje, stb. Viszont nincs minden állatnak ugyanannyi lába, így legyen egy függvény, amely a mozgásokért felel egy absztrakt függvény (azaz ne legyen törzse). Ekkor bármelyik osztály, amely öröklõdik az Animal osztályból meg kell valósítania a mozgás függvényt. Ilyen cselekvéseket viszont lehet egy interface-ben is összeszedni (milyen hangot adjon ki, mit egyen, stb.). 
-#### Hogyan lehet átalakítani a következõ függvényt generikusok segítségével, hogy ne csak Long-okat tartalmazõ tömböket legyen képes kezelni?  
+#### Mi a kÃ¼lÃ¶nbsÃ©g az interface Ã©s abstract osztÃ¡ly kÃ¶zÃ¶tt?  
+Az absztrakt osztÃ¡ly olyan osztÃ¡ly, melynek van olyan fÃ¼ggvÃ©nye, melynek van olyan fÃ¼ggvÃ©nye, melynek nincs tÃ¶rzse, mivel azt majd az osztÃ¡lybÃ³l szÃ¡rmazÃ³ osztÃ¡lyok fogjÃ¡k megvalÃ³sÃ­tani. MÃ­g az interface egy teljesen absztract osztÃ¡ly. Benne minden fÃ¼ggvÃ©nynek csak fejlÃ©ce van Ã©s minden vÃ¡ltozÃ³ benne public, static Ã©s final. Mivel Java-ban nincs tÃ¶bbszÃ¶rÃ¶s Ã¶rÃ¶klÅ‘dÃ©s, emiatt mindig csak egy Å‘sosztÃ¡lya lehet, viszont implementÃ¡lhat tÃ¶bb interface-t is. PÃ©ldÃ¡ul egy abstrakt osztÃ¡ly legyen az Animal osztÃ¡ly. Minden Ã¡llatnak van szeme, feje, stb. Viszont nincs minden Ã¡llatnak ugyanannyi lÃ¡ba, Ã­gy legyen egy fÃ¼ggvÃ©ny, amely a mozgÃ¡sokÃ©rt felel egy absztrakt fÃ¼ggvÃ©ny (azaz ne legyen tÃ¶rzse). Ekkor bÃ¡rmelyik osztÃ¡ly, amely Ã¶rÃ¶klÅ‘dik az Animal osztÃ¡lybÃ³l meg kell valÃ³sÃ­tania a mozgÃ¡s fÃ¼ggvÃ©nyt. Ilyen cselekvÃ©seket viszont lehet egy interface-ben is Ã¶sszeszedni (milyen hangot adjon ki, mit egyen, stb.). 
+#### Hogyan lehet Ã¡talakÃ­tani a kÃ¶vetkezÅ‘ fÃ¼ggvÃ©nyt generikusok segÃ­tsÃ©gÃ©vel, hogy ne csak Long-okat tartalmazÅ‘ tÃ¶mbÃ¶ket legyen kÃ©pes kezelni?  
 ```  
 public List<Long> fromArrayToList(Long[] a) {  
-return Arrays.stream(a).collect(Collectors.toList();  
+	return Arrays.stream(a).collect(Collectors.toList();  
 }  
 ```  
   
 ```  
 public List<T> fromArrayToList(T[] a) {  
-return Arrays.stream(a).collect(Collectors.toList();  
+	return Arrays.stream(a).collect(Collectors.toList();  
 }  
 ```  
-#### Mi a különbség az == és .equals() között?  
+#### Mi a kÃ¼lÃ¶nbsÃ©g az == Ã©s .equals() kÃ¶zÃ¶tt?  
   
-== esetén két változó referencia szintû azonosságának ellenõrzése történik, míg .equals() esetén tényleges értékellenõrzés csak. == operátort Immutable osztályoknál érdemes használni, melyek a stack-ben tárolódnak, míg .equals() függvényt Mutable esetében érdemes, melyek értéke a heap-ben tárolódnak. Példa:  
+== esetÃ©n kÃ©t vÃ¡ltozÃ³ referencia szintÅ± azonossÃ¡gÃ¡nak ellenÅ‘rzÃ©se tÃ¶rtÃ©nik, mÃ­g .equals() esetÃ©n tÃ©nyleges Ã©rtÃ©kellenÅ‘rzÃ©s csak. == operÃ¡tort Immutable osztÃ¡lyoknÃ¡l Ã©rdemes hasznÃ¡lni, melyek a stack-ben tÃ¡rolÃ³dnak, mÃ­g .equals() fÃ¼ggvÃ©nyt Mutable esetÃ©ben Ã©rdemes, melyek Ã©rtÃ©ke a heap-ben tÃ¡rolÃ³dnak. PÃ©lda:  
 ```  
 Integer x = new Integer(2); // Immutable  
 String b = new String("b"); // Mutable  
@@ -231,64 +231,66 @@ System.out.println(b == "b"); // return false
 System.out.println(b.equals("b")); // return true  
 ```  
   
-#### Mi a Java Stream API? Hogyan alakítanád át a következõ függvényt, hogy Stream API-t használjon?  
+#### Mi a Java Stream API? Hogyan alakÃ­tanÃ¡d Ã¡t a kÃ¶vetkezÅ‘ fÃ¼ggvÃ©nyt, hogy Stream API-t hasznÃ¡ljon?  
 ```  
 public static String myConcat(Integer[] a) {  
-StringBuilder sb = new StringBuilder();  
-for (int value: a) {  
-sb.append(value);  
-sb.append(",");  
-}  
-return sb.toString();  
+	StringBuilder sb = new StringBuilder();  
+	for (int value: a) {  
+		sb.append(value);  
+		sb.append(",");  
+	}  
+	return sb.toString();  
 }  
 ```  
   
-A Java Stream API segítségével egyes collection-ben (Set, List, Map, stb.) tárolt objektumok feldolgozásáért felel. Stream segítségével pipeline-osított keretek között tudjuk az adatot feldolgozni és visszaadni azt, amit az üzleti logika igényel. A Stream során az eredeti adatstruktúra adatai nem változnak, és minden Stream-ben használt függvény (map, filter, stb) stream-mel tér vissza, a pipeline-osítás segítése végett.  
+A Java Stream API segÃ­tsÃ©gÃ©vel egyes collection-ben (Set, List, Map, stb.) tÃ¡rolt objektumok feldolgozÃ¡sÃ¡Ã©rt felel. Stream segÃ­tsÃ©gÃ©vel pipeline-osÃ­tott keretek kÃ¶zÃ¶tt tudjuk az adatot feldolgozni Ã©s visszaadni azt, amit az Ã¼zleti logika igÃ©nyel. A Stream sorÃ¡n az eredeti adatstruktÃºra adatai nem vÃ¡ltoznak, Ã©s minden Stream-ben hasznÃ¡lt fÃ¼ggvÃ©ny (map, filter, stb) stream-mel tÃ©r vissza, a pipeline-osÃ­tÃ¡s segÃ­tÃ©se vÃ©gett.  
   
 ```  
 public static String myConcat(Integer[] a) {  
-return Arrays.stream(a).map(Object::toString)  
-.collect(Collectors.joining(", "));  
+	return Arrays
+		.stream(a)
+		.map(Object::toString)  
+		.collect(Collectors.joining(", "));  
 }  
 ```
 
-#### Vegyük az alábbi osztályokat. Hogyan módosítsuk az Employee osztályt, hogy a Main osztályban lévõ equals metódus kimenete „Ugyanaz a személy!” legyen.
+#### VegyÃ¼k az alÃ¡bbi osztÃ¡lyokat. Hogyan mÃ³dosÃ­tsuk az Employee osztÃ¡lyt, hogy a Main osztÃ¡lyban lÃ©vÅ‘ equals metÃ³dus kimenete Â„Ugyanaz a szemÃ©ly!Â” legyen.
 
-**Employee osztály:**
+**Employee osztÃ¡ly:**
 ```
-	public class Employee { 
-		private int id; 
-		private String firstName; 
-		private String lastName; 	
-		public Employee(int id, String firstName, String lastName) { 
-			this.id = id; 
-			this.firstName = firstName; 
-			this.lastName = lastName; 
+public class Employee { 
+	private int id; 
+	private String firstName; 
+	private String lastName; 	
+	public Employee(int id, String firstName, String lastName) { 
+		this.id = id; 
+		this.firstName = firstName; 
+		this.lastName = lastName; 
+	} 
+}
+```
+**Main osztÃ¡ly:**
+```
+public class Main { 
+	public static void main(String[] args) { 
+		Employee employee = new Employee(1,"John", "Doe"); 
+		Employee employee2 = new Employee(1,"John", "Doe"); 
+		if(employee.equals(employee2)){ 
+			System.out.println("Ugyanaz a szemÃ©ly!"); 
+		} else { 
+			System.out.println("KÃ©t kÃ¼lÃ¶nbÃ¶zÅ‘ szemÃ©ly."); 
 		} 
-	}
-```
-**Main osztály:**
-```
-	public class Main { 
-		public static void main(String[] args) { 
-			Employee employee = new Employee(1,"John", "Doe"); 
-			Employee employee2 = new Employee(1,"John", "Doe"); 
-			if(employee.equals(employee2)){ 
-				System.out.println("Ugyanaz a személy!"); 
-			} else { 
-			System.out.println("Két különbözõ személy."); 
-			} 
-		} 
-	}
+	} 
+}
 ```
 
-Felül kell írni az Employee osztály equals függvényét az alábbi módon:
+FelÃ¼l kell Ã­rni az Employee osztÃ¡ly equals fÃ¼ggvÃ©nyÃ©t az alÃ¡bbi mÃ³don:
 ```
-	@Override  
-	public boolean equals(Object o) {  
-	    if (this == o) return true;  
-		if (o == null || getClass() != o.getClass()) return false;  
-		Employee employee = (Employee) o;  
-		return id == employee.id && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);  
+@Override  
+public boolean equals(Object o) {  
+	if (this == o) return true;  
+	if (o == null || getClass() != o.getClass()) return false;  
+	Employee employee = (Employee) o;  
+	return id == employee.id && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);  
 }
 ```
