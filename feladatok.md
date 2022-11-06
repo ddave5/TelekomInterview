@@ -97,7 +97,19 @@ fetchData() : void {
 }
 ```
   
-#### Mik az observable létrehozó függvények? Adjon példát a használatukra!  
+#### Mik az observable létrehozó függvények? Adjon példát a használatukra!
+A kérdést pontosan nem értem, emiatt írok inkább az observable-ről. Maga az observable segítségével aszinkron módon tudunk több adatot kezelni. Ha egy esemény megtörténik, akkor arra fel tudunk iratkozni a ```subscribe()```  függvény segítségével, az eseményben kapott adatot pedig a ```pipe()```  függvény segítségével tudjuk manipulálni. Ha egy eseményt már nem akarunk tovább futtatni, mert sikeresen feldolgoztuk, akkor érdemes az ```unsubscribe()```  függvényt meghívni rajta, hogy elkerüljük azt, hogy feleslegesen foglaljon memóriát. Példa observable használatára:
+```
+getAllMovies() : Observable<Movie[]>{
+	return  this.http.get<Movie[]>(this.apiUrl + 'movies')
+}
+
+getAllMovies().pipe(
+	map((data) => data.value)
+).subscribe( (data) => {
+	console.log(data);
+});
+``` 
   
 #### Vegyük az alábbi kódrészleteket. Hogyan kell módosítani, hogy reactive form-ot használjon? 
 **app.module.ts**
