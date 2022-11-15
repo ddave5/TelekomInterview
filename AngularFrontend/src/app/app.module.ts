@@ -6,20 +6,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import { NavComponent } from './pages/nav/nav.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateModule } from './pages/create/create.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditModule } from './pages/edit/edit.module';
 import { FooterComponent } from './pages/footer/footer.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { SplashScreenComponent } from './pages/splash-screen/splash-screen.component';
+import { ErrorInterceptor } from './interceptors/error-interceptor';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     MoviesComponent,
-    FooterComponent
+    FooterComponent,
+    ErrorComponent,
+    SplashScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +38,12 @@ import { FooterComponent } from './pages/footer/footer.component';
     ReactiveFormsModule,
     CreateModule,
     NgbModule,
-    EditModule
+    EditModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

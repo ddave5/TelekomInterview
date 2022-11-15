@@ -22,6 +22,7 @@ export class EditComponent implements OnInit {
   status: number | undefined;
   id: number; 
   url: string = "https://res.cloudinary.com/people-matters/image/upload/f_auto,q_auto,w_800,h_800,c_lpad/v1517845732/1517845731.jpg";
+  errorMessage = '';
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -41,7 +42,10 @@ export class EditComponent implements OnInit {
           date: data.date
         }
 
-        this.editForm.patchValue({...movie})
+        this.editForm.patchValue({...movie});
+      },
+      (error) => {
+        this.errorMessage = 'Sajnáljuk, de nem találtunk ilyen filmet!'
       }
     )
   }

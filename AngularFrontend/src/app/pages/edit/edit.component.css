@@ -10,3 +10,7 @@
   height: 70vh;
   width: 25vw;
 }
+
+.error__message {
+  min-height: calc(100vh - 10rem);
+}

@@ -47,4 +47,5 @@ public class MovieServiceImpl implements MovieService {
         return movieOptional.orElseThrow(
                 () -> new IllegalArgumentException(("Movie with id: " + id + " does not exists.")));
     }
+
 }

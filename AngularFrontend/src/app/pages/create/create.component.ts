@@ -44,9 +44,6 @@ export class CreateComponent implements OnInit, OnChanges{
   }
 
   onSubmit(): void {
-    if (this.createForm.invalid) {
-      return;
-    }
 
     const createdMovie: Movie = {
       title: this.createForm.value.title,

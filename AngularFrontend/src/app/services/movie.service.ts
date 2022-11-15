@@ -14,7 +14,7 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   getAllMovies() : Observable<Movie[]>{
-    return this.http.get<Movie[]>(this.apiUrl + 'movies')
+    return this.http.get<Movie[]>(this.apiUrl + 'movies');
   }
 
   getCurrentMovie(id : number): Observable<Movie> {
@@ -28,7 +28,7 @@ export class MovieService {
         'Content-Type': 'application/json'
       })
     }
-    return this.http.put(this.apiUrl + 'movie/edit', params, httpOptions);
+    return this.http.put(this.apiUrl + 'movie/edit/' + m.id, params, httpOptions);
   }
 
   deleteMovie(m: Movie): Observable<void> {
